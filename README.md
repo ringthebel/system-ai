@@ -1,2 +1,2 @@
 # system-ai
-story telling about transformation of data
+story telling about the transformation of data
