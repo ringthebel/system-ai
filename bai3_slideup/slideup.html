@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Vanilla JS Project: Toggle password visibility</title>
+  <!-- bootstrap css 4.5.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+  <!-- font awesome 5.13.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
+  <style>
+    #slider div {
+      font-size: 5vw; /* Sử dụng đơn vị vw để điều chỉnh kích thước chữ */
+      width: 80%; /* Ví dụ về kích thước thẻ div */
+      margin: 0 auto;
+    }
+    .wrapper { display: flex; justify-content: center; }
+    .control { display: inline-block; transition: all 0.3s; overflow: hidden; margin-left: 10px; }
+    /* .control { display: inline-block; transition: all 0.3s; height: 75px; overflow: hidden; margin-left: 10px; } */
+    /* #slider div { height: 75px; line-height: 60px;padding: 0 5px; } */
+    .animated { transition: all 0.5s; margin-top: -75px; }
+  </style>
+</head>
+<body>
+    <div class="wrapper display-4 text-center mt-5">
+        Code đêm có thể khiến bạn bị
+        <div class="control">
+          <div id="slider" class="text-black bg-danger">
+            <div>trầm cảm</div>
+            <div>căng thẳng</div>
+            <div>gay</div>
+          </div>
+        </div>
+      </div>
+    <script>
+        const wrapElement = document.querySelector('#slider')
+
+        setInterval(slidingText, 3000)
+            function slidingText() {
+            wrapElement.classList.add('animated')
+            setTimeout(loopText, 500)
+        }
+
+        function loopText() {
+            const firstElement = document.querySelector('#slider div')
+            wrapElement.appendChild(firstElement)
+            wrapElement.classList.remove('animated')
+        }
+    </script>
+</body>
+</html>

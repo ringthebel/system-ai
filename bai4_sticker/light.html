@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vanilla JS Project: Animated sticker</title>
+  <style type="text/css">
+    .sticker {
+      width: 120px; height: 200px; 
+      background: url(image/llight.png) no-repeat 0 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Vanilla JS Project: Animated sticker</h1> 
+  <div class="sticker"></div>
+  <script type="text/javascript">
+    const layoutWidth = 2678
+    const layoutHeight = 207
+    const totalImages = 20
+    const imageWidth = layoutWidth / totalImages
+    const imageHeight = layoutHeight
+    let count = 1
+    let positionX = 0
+    const stickerElement = document.querySelector('.sticker')
+
+    setInterval(function() {
+    positionX = -(imageWidth * count)
+    stickerElement.style.backgroundPosition = `${positionX}px 0`
+    count++
+    count = (count >= totalImages) ? 0 : count
+    }, 2000 / totalImages)
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gif.js/dist/gif.js"></script>
+  <script>
+    // Khởi tạo một đối tượng Gif
+    const gif = new GIF({
+      workers: 2, // Số lượng worker sử dụng để tạo GIF
+      quality: 10, // Chất lượng của GIF (từ 1 đến 30)
+      width: layoutWidth, // Chiều rộng GIF
+      height: layoutHeight, // Chiều cao GIF
+    });
+
+    // Thêm từng khung hình của Animated sticker vào GIF
+    for (let i = 0; i < totalImages; i++) {
+      const image = new Image();
+      image.src = `image/llight-${i + 1}.png`; // Đường dẫn đến từng khung hình
+      gif.addFrame(image, { delay: 100 }); // Thêm khung hình và đặt thời gian trễ giữa các khung hình (đơn vị: ms)
+    }
+
+    // Khi quá trình thêm khung hình hoàn tất
+    gif.on("finished", function(blob) {
+      // Tạo một đường dẫn tải xuống
+      const url = URL.createObjectURL(blob);
+
+      // Tạo một thẻ a để tải xuống
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "animated_sticker.gif"; // Đặt tên tập tin tải xuống
+      link.click();
+
+      // Giải phóng đường dẫn tải xuống
+      URL.revokeObjectURL(url);
+    });
+
+    // Bắt đầu quá trình tạo GIF
+    gif.render();
+  </script>
+</body>
+</html>

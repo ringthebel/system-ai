@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Vanilla JS Project: Toggle password visibility</title>
+  <!-- bootstrap css 4.5.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+  <!-- font awesome 5.13.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
+</head>
+<body>
+    <div class="text-center mt-5">
+        <div class="mb-5">
+            <img class="img-thumbnail" id="btnPassword" src="image/off.png" alt="" onmouseover="mouseOver()" onmouseout="mouseOut()">
+        </div>
+        <button class="btn btn-primary">Bật đèn</button>
+        <script>
+            function mouseOver() {
+            document.getElementById("btnPassword").src = "image/on.png";
+            }
+
+            function mouseOut() {
+            document.getElementById("btnPassword").src = "image/off.png";
+            }
+        </script>
+        <script>
+            // step 1
+            let statusLight = false
+
+            // step 2
+            const imgElement = document.querySelector('img')
+            const btnElement = document.querySelector('button')
+
+            // step 3
+            btnElement.addEventListener('click', function() {
+                imgElement.src       = statusLight ? 'image/off.png' : 'image/on.png'
+                btnElement.innerText = statusLight ? 'Bật đèn' : 'Tắt đèn'
+                statusLight          = !statusLight
+            })
+        </script>
+    </div>
+</body>
+</html>

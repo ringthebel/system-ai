@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Vanilla JS Project: Toggle password visibility</title>
+  <!-- bootstrap css 4.5.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+  <!-- font awesome 5.13.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="my-5 text-center">Vanilla JS Project: Toggle password visibility</h1>
+    <div class="form-group">
+      <label for="ipnPassword">Password</label>
+      <div class="input-group mb-3">
+        <input type="password" class="form-control" id="ipnPassword" />
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="btnPassword">
+            <span class="fas fa-eye" onmouseover="mouseOver()" onmouseout="mouseOut()"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      function mouseOver() {
+      document.getElementById("ipnPassword").type = "text";
+      }
+
+      function mouseOut() {
+      document.getElementById("ipnPassword").type = "password";
+      }
+  </script>
+  <!-- <script>
+    // step 1 nen lay theo id de ko nham lan element
+    const ipnElement = document.querySelector('#ipnPassword')
+    const btnElement = document.querySelector('#btnPassword')
+    // const ipnElement = document.querySelector('input')
+    // const btnElement = document.querySelector('button')
+
+    // step 2
+    btnElement.addEventListener('click', function() {
+    // step 3
+    const currentType = ipnElement.getAttribute('type')
+    // step 4
+    ipnElement.setAttribute(
+        'type',
+        currentType === 'password' ? 'text' : 'password'
+    )
+    })
+
+  </script> -->
+</body>
+</html>

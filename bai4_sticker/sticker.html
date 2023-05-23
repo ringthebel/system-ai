@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vanilla JS Project: Animated sticker</title>
+  <style type="text/css">
+    .sticker {
+      width: 41.25px; height: 41px; 
+      background: url(image/sticker.png) no-repeat 0 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Vanilla JS Project: Animated sticker</h1> 
+  <div class="sticker"></div>
+  <script type="text/javascript">
+    const layoutWidth = 820
+    const layoutHeight = 41
+    const totalImages = 20
+    const imageWidth = layoutWidth / totalImages
+    const imageHeight = layoutHeight
+    let count = 1
+    let positionX = 0
+    const stickerElement = document.querySelector('.sticker')
+
+    setInterval(function() {
+    positionX = -(imageWidth * count)
+    stickerElement.style.backgroundPosition = `${positionX}px 0`
+    count++
+    count = (count >= totalImages) ? 0 : count
+    }, 1000 / totalImages)
+  </script>
+</body>
+</html>
